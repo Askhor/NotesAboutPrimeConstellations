@@ -1,0 +1,119 @@
+\documentclass{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage{unicode-helper}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{microtype}
+\usepackage{tikz-cd}
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{mathtools}
+\usepackage{braket}
+\usepackage[backend=biber,style=numeric]{biblatex}
+\usepackage[pdftex]{hyperref}
+\usepackage{cleveref}
+
+\newcommand{\titlevar}{Notes about Prime Constellations}
+\newcommand{\authorvar}{Günthner}
+\newcommand{\datevar}{Winter 2024}
+\title{\titlevar}
+\author{\authorvar}
+\date{\datevar}
+\hypersetup{
+	pdftitle=\titlevar,
+	pdfauthor=\authorvar,
+	pdfcreationdate=\datevar,
+}
+\setlength{\parindent}{0pt}
+
+\newlength{\halflength}
+\setlength{\halflength}{100pt}
+
+\newcommand{\card}[1]{\#{#1}}
+\newcommand{\inv}{^{-1}}
+\newcommand{\ringunits}[1]{{#1}^{\mathclap{\rule{2.5pt}{0pt}\times}\rule{0.2em}{0pt}}}
+\newcommand{\ringunitsb}[1]{\ringunits{\left({#1}{\vphantom{p^k}}\right)}}
+\newcommand{\ordgroup}[1]{\ord_{\rule{0pt}{9pt}\mathclap{#1}}}
+\newcommand{\ordadd}[1]{\ordgroup{ℤ/{#1}ℤ}}
+\newcommand{\ordmult}[1]{\ord_{\rule{0pt}{8pt}{
+			\settowidth{\halflength}{$\scriptstyle \left({ℤ/{#1}ℤ}{\vphantom{p^k}}\right)$}
+			\mathrlap{\rule{-0.5 \halflength}{0pt}\ringunitsb{ℤ/{#1}ℤ}}
+}}}
+\newcommand{\ordker}[1]{\ordgroup{\ker(\mathrlap{#1)}}}
+\newcommand{\frakB}{\mathfrak{B}}
+\newcommand{\frakc}{\mathfrak{c}}
+\newcommand{\bigbarn}[1]{\big({#1}\big)}
+\newcommand{\Bigbarn}[1]{\Big({#1}\Big)}
+\newcommand{\spospart}[1]{ {(#1)} _ {\rule{1.5pt}{0pt}\mathclap +} }
+\newcommand{\pospart}[1]{{ {\bigbarn{#1}} _ {\mathclap +} }}
+\newcommand{\tritem}{\item[$\blacktriangleright$]}
+\newcommand{\gspan}[1]{<#1>}
+\DeclareMathOperator{\ordb}{ord}
+\newcommand{\ord}{\mathop{\ordb}\limits}
+\newcommand{\powerset}{\mathcal{P}}
+\DeclareMathOperator{\lcm}{lcm}
+\newenvironment{pg}{
+	
+}{
+	
+	\medskip
+	
+}
+\newcommand{\mapdefinition}[5]{
+	\begin{center}
+		\begin{tabular}{llll}
+			$#1:$ 	&	$#2$ & $→$ & $#3$ 	\\
+			&	$#4$ & $↦$ & $#5$	\\
+		\end{tabular}
+	\end{center}
+}
+
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{theorem}{Theorem}
+
+\newsavebox{\proveLemmaThree}
+\newsavebox{\proveLemmaFive}
+
+\crefname{lemma}{Lemma}{Lemmata}
+\crefname{equation}{equation}{equations}
+\crefname{theorem}{Theorem}{Theorems}
+\crefname{definition}{Definition}{Definitions}
+
+\addbibresource{Order Formula.bib}
+
+\begin{document}
+	\maketitle
+	
+	\begin{definition}
+		A Constellation is a function: $χ: ℕ → \powerset(ℕ)$
+	\end{definition}
+	
+	\begin{equation}
+		ψ: ℕ → ℕ
+	\end{equation}
+	
+	\begin{equation}
+		M_χ^ψ(0) \coloneq ℕ
+	\end{equation}
+	\begin{equation}
+		\begin{split}
+			M_χ^ψ(k) &\coloneq M_χ^ψ(k-1) \setminus \bigcup_{iϵχ(ψ(k))} iℕ \\
+			&=
+		\end{split}
+	\end{equation}
+	
+	\begin{definition}
+		\begin{equation}
+			Ψ_χ^ψ = \lim_{k→∞} M_χ^ψ(k)
+		\end{equation}
+	\end{definition}
+	
+	\begin{lemma}
+		\begin{equation}
+			\mathbb{P} = Ψ_{id}^{π\inv}
+		\end{equation}
+	\end{lemma}
+\end{document}
