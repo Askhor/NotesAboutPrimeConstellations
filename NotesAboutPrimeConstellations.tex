@@ -54,6 +54,7 @@
 \newcommand{\ord}{\mathop{\ordb}\limits}
 \newcommand{\powerset}{\mathcal{P}}
 \DeclareMathOperator{\lcm}{lcm}
+\DeclareMathOperator{\id}{id}
 \newenvironment{pg}{
 	
 }{
@@ -96,19 +97,31 @@
 	\end{equation}
 	
 	\begin{equation}
-		M_χ^ψ(0) \coloneq ℕ
+		M_χ^ψ(0) \coloneq M_0 \coloneq \set{2,3,4,5,\dots}
 	\end{equation}
 	\begin{equation}
 		\begin{split}
-			M_χ^ψ(k) \coloneq& M_χ^ψ(k-1) \setminus χ(ψ(k)·(ℕ+1)) \\
-			=& M_χ^ψ(k-1) \setminus \Big( M_χ^ψ(k-1) \cap χ(ψ(k)·(ℕ+1)) \Big)
+			M_χ^ψ(k) \coloneq& M_χ^ψ(k-1) \setminus χ\left(ψ(k) · M_0\right) \\
+			=& M_χ^ψ(k-1) \setminus \Big( M_χ^ψ(k-1) \cap χ\left(ψ(k) · M_0\right) \Big)
 		\end{split}
 	\end{equation}
 	
 	\section{Derivation}
 	
+	For $χ=\id$:
 	\begin{equation}
-		M_χ^ψ(k-1) \cap χ(ψ(k)·(ℕ+1))
+		\begin{split}
+			M_χ^ψ(k-1) \cap χ\left(ψ(k) · M_0\right) &= M_χ^ψ(k-1) \cap \left(ψ(k) · M_0\right) \\
+			&= ψ(k) · M_χ^ψ(k-1)
+		\end{split}
+	\end{equation}
+	
+	For $χ(n)=\set{n-2, n}$:
+	\begin{equation}
+		\begin{split}
+			M_χ^ψ(k-1) \cap χ\left(ψ(k) · M_0\right) &= M_χ^ψ(k-1) \cap χ\left(ψ(k) · M_0\right) \\
+			&= 
+		\end{split}
 	\end{equation}
 	
 	\section{Results}
@@ -121,7 +134,17 @@
 	
 	\begin{lemma}
 		\begin{equation}
-			\mathbb{P} = Ψ_{id}^{π\inv}
+			\mathbb{P} = Ψ_{\id}^{π\inv}
 		\end{equation}
 	\end{lemma}
+	
+	\section{Notes}
+	
+	\begin{tabular}{|c|c|c|c|c|c|c|c|c|c|}
+		\hline
+		$2$ & $3$ & & $5$ & & $7$ & & & & \\
+		\hline
+		& & $2$ & $3$ & & $5$ & & $7$ & &  \\
+		\hline
+	\end{tabular}
 \end{document}
