@@ -56,13 +56,7 @@
 \newcommand{\powerset}{\mathcal{P}}
 \DeclareMathOperator{\lcm}{lcm}
 \DeclareMathOperator{\id}{id}
-\newenvironment{pg}{
-	
-}{
-	
-	\medskip
-	
-}
+
 \newcommand{\maybeequal}{\stackrel{?}{=}}
 \newcommand{\mapdefinition}[5]{
 	\begin{center}
@@ -74,6 +68,8 @@
 }
 \newcommand{\padlr}[2]{\rule{#2}{0pt} {#1} \rule{#2}{0pt}}
 \newcommand{\buildset}[2]{\set{{#1} \ : \ {#2}}}
+\newcommand{\floor}[1]{\left\lfloor {#1} \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil {#1} \right\rceil}
 
 \newtheorem{definition}{Definition}
 \newtheorem{lemma}{Lemma}
@@ -157,20 +153,34 @@
 	\begin{equation}
 		\begin{split}
 			M_χ^ψ(0) \coloneq M_0 \coloneq&\ ℤ \setminus \buildset{tϵℤ}{∃ lϵ[d]: χ_l(t)=0 ∨ χ_l(t)ϵ\ringunits{ℤ}} \\
-			=& ℤ \setminus χ\inv(0) \setminus χ\inv(\ringunits{ℤ})
+			=&\ ℤ \setminus χ\inv(0) \setminus χ\inv(\ringunits{ℤ})
 		\end{split}
 	\end{equation}
 	\begin{equation}
 		\begin{split}
-			M_χ^ψ(k) \coloneq& M_χ^ψ(k-1) \setminus \buildset{tϵℤ}{∃ lϵχ(t): ψ(k) \mid l} \\
-			=& M_χ^ψ(k-1) \setminus \buildset{tϵℤ}{∃ lϵ[d], mϵM_0 : mψ(k) = χ_l(t)}\\
-			=& M_χ^ψ(k-1) \setminus \buildset{tϵℤ}{∃ lϵ[d], mϵM_0 : χ\inv_l(mψ(k)) = t}\\
-			=& M_χ^ψ(k-1) \setminus χ\inv\left(ψ(k) · M_0\right) \\
-			=& M_χ^ψ(k-1) \setminus \Big( M_χ^ψ(k-1) \cap χ\inv\left(ψ(k) · M_0\right) \Big) \\
+			M_χ^ψ(k) \coloneq&\ M_χ^ψ(k-1) \setminus \buildset{tϵℤ}{∃ lϵχ(t): ψ(k) \mid l} \\
+			=&\ M_χ^ψ(k-1) \setminus \buildset{tϵℤ}{∃ lϵ[d], mϵM_0 : mψ(k) = χ_l(t)}\\
+			=&\ M_χ^ψ(k-1) \setminus \buildset{tϵℤ}{∃ lϵ[d], mϵM_0 : χ\inv_l(mψ(k)) = t}\\
+			=&\ M_χ^ψ(k-1) \setminus χ\inv\left(ψ(k) · M_0\right) \\
+			=&\ M_χ^ψ(k-1) \setminus \Big( M_χ^ψ(k-1) \cap χ\inv\left(ψ(k) · M_0\right) \Big) \\
 		\end{split}
 	\end{equation}
 	
+	\begin{definition}
+		\begin{equation}
+			Ψ_χ^ψ = \lim_{k→∞} M_χ^ψ(k)
+		\end{equation}
+	\end{definition}
+	
+	\begin{definition}
+		\begin{equation}
+			π_χ^ψ(t) = \card{(Ψ_χ^ψ \cap [t])}
+		\end{equation}
+	\end{definition}
+	
 	\section{Derivation}
+	
+	\subsection{Primes}
 	
 	For $χ=\id$:
 	\begin{equation}
@@ -179,6 +189,23 @@
 			&= ψ(k) · M_χ^ψ(k-1)
 		\end{split}
 	\end{equation}
+	
+	\begin{equation}
+		π_{\id}^ψ(t) = γ_{ψ\inv(t)}^ψ(t)
+	\end{equation}
+	\begin{equation}
+		γ_k^ψ(t) \coloneq M_χ^ψ(t) \cap [t]
+	\end{equation}
+	\begin{equation}
+		γ_0^ψ(t) = t
+	\end{equation}
+	\begin{equation}
+		\begin{split}
+			γ_k^ψ(t) = γ_{k-1}^ψ(t) - γ_{k-1}^ψ(\floor{\frac{t}{ψ(t)}})
+		\end{split}
+	\end{equation}
+	
+	\subsection{Twin Primes}
 	
 	For $χ(t)=\set{t-2, t}$:
 	\begin{equation}
@@ -189,6 +216,8 @@
 		\end{split}
 	\end{equation}
 	
+	\subsection{Goldbach-n-primes}
+	
 	For $nϵℕ$ and $χ(t)=\set{t, n-t}$:
 	\begin{equation}
 		\begin{split}
@@ -197,17 +226,43 @@
 		\end{split}
 	\end{equation}
 	
-	\section{Results}
+	\subsection{Landau's Fourth Problem}
 	
-	\begin{definition}
-		\begin{equation}
-			Ψ_χ^ψ = \lim_{k→∞} M_χ^ψ(k)
-		\end{equation}
-	\end{definition}
+	\begin{equation}
+		\begin{split}
+			M_χ^ψ(k-1) \cap χ\inv\left( ψ(K)M_0 \right) &= M_χ^ψ(k-1) \cap \sqrt{ψ(k)M_0 -1}
+		\end{split}
+	\end{equation}
+	
+	\subsection{Mersenne Primes}
+	
+	\begin{equation}
+		\begin{split}
+			M_χ^ψ(k-1) \cap χ\inv\left( ψ(K)M_0 \right) &= M_χ^ψ(k-1) \cap \log_2(ψ(k)M_0 + 1)
+		\end{split}
+	\end{equation}
+	
+	\subsection{Sophie Germain Primes}
+	
+	\begin{equation}
+		\begin{split}
+			M&_χ^ψ(k-1) \cap χ\inv\left( ψ(K)M_0 \right) \\
+			&= (M_χ^ψ(k-1) \cap ψ(k)M_0) \cup (M_χ^ψ(k-1) \cap \frac{ψ(k)M_0 - 1}{2})
+		\end{split}
+	\end{equation}
+	
+	\section{Results}
+
 	
 	\begin{lemma}
 		\begin{equation}
 			\mathbb{P} = Ψ_{\id}^{π\inv}
+		\end{equation}
+	\end{lemma}
+	
+	\begin{lemma}
+		\begin{equation}
+			π(t) = π_{\id}^{π\inv}(t)
 		\end{equation}
 	\end{lemma}
 	
