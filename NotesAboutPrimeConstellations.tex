@@ -134,6 +134,10 @@
 	
 	The constellation $χ(t) = 2^t-1$ yields Mersenne Primes.
 	
+	\subsubsection{Sophie Germain Primes}
+	
+	The constellation $χ(t) = (t, 2t+1)$ yields Sophie Germain Primes.
+	
 	\section{Basic Definitions}
 	
 	Let's define a function that generalizes prime numbers:
@@ -151,7 +155,10 @@
 	
 	Now to define the numbers \enquote{coprime} to the first $k$ \enquote{prime} numbers: $M_χ^ψ(k)$
 	\begin{equation}
-		M_χ^ψ(0) \coloneq M_0 \coloneq ℤ \setminus \buildset{tϵℤ}{∃ lϵχ(t): l=0 ∨ lϵ\ringunits{ℤ}}
+		\begin{split}
+			M_χ^ψ(0) \coloneq M_0 \coloneq&\ ℤ \setminus \buildset{tϵℤ}{∃ lϵ[d]: χ_l(t)=0 ∨ χ_l(t)ϵ\ringunits{ℤ}} \\
+			=& ℤ \setminus χ\inv(0) \setminus χ\inv(\ringunits{ℤ})
+		\end{split}
 	\end{equation}
 	\begin{equation}
 		\begin{split}
@@ -185,8 +192,8 @@
 	For $nϵℕ$ and $χ(t)=\set{t, n-t}$:
 	\begin{equation}
 		\begin{split}
-			M_χ^ψ(k-1) \cap χ\left(ψ(k) · M_0\right) &= M_χ^ψ(k-1) \cap χ\left(ψ(k) · M_0\right) \\
-			&= 
+			M&_χ^ψ(k-1) \cap χ\inv\left(ψ(k) · M_0\right) \\
+			&= (M_χ^ψ(k-1) \cap ψ(k)M_0) \cup (M_χ^ψ(k-1) \cap (n - ψ(k)M_0))
 		\end{split}
 	\end{equation}
 	
