@@ -93,7 +93,8 @@
 	\section{Introduction}
 	
 	\begin{definition}
-		A Constellation is a function: $χ: ℤ → \powerset(ℤ)$
+		A Constellation is a function: $χ: ℝ → ℝ^d$ \\
+		We call $d$ the degree of the constellation.
 	\end{definition}
 	
 	We are now looking for $n$ such that all $χ(n)$ are prime! Or rather we are looking for their count in the range $[1,n]$. To do this we will first \enquote{generalize} prime numbers because we have to closed form expression for $π(n)$, the number of primes in the range $[1,n]$. Instead we have an upper bound.
@@ -136,15 +137,25 @@
 		ψ: ℤ → ℤ
 	\end{equation}
 	
-	Now to define the numbers \enquote{coprime} to the first $k$ \enquote{prime} numbers $M_χ^ψ(k)$:
+	We will also need an inverse function for $χ$:
+	\begin{equation}
+		\begin{split}
+			χ\inv : ℝ &→ ℝ^d \\
+			χ\inv(t) &= (χ\inv_k(t))_{kϵ[d]}
+		\end{split}
+	\end{equation}
+	
+	Now to define the numbers \enquote{coprime} to the first $k$ \enquote{prime} numbers: $M_χ^ψ(k)$
 	\begin{equation}
 		M_χ^ψ(0) \coloneq M_0 \coloneq ℤ \setminus \buildset{tϵℤ}{∃ lϵχ(t): l=0 ∨ lϵ\ringunits{ℤ}}
 	\end{equation}
 	\begin{equation}
 		\begin{split}
-			M_χ^ψ(k) \coloneq& M_χ^ψ(k-1) \setminus \buildset{tϵℤ}{∃ lϵχ(t): ψ(t) \mid l} \\
-			\maybeequal& M_χ^ψ(k-1) \setminus χ\left(ψ(k) · M_0\right) \\
-			=& M_χ^ψ(k-1) \setminus \Big( M_χ^ψ(k-1) \cap χ\left(ψ(k) · M_0\right) \Big) \\
+			M_χ^ψ(k) \coloneq& M_χ^ψ(k-1) \setminus \buildset{tϵℤ}{∃ lϵχ(t): ψ(k) \mid l} \\
+			=& M_χ^ψ(k-1) \setminus \buildset{tϵℤ}{∃ lϵ[d], mϵM_0 : mψ(k) = χ_l(t)}\\
+			=& M_χ^ψ(k-1) \setminus \buildset{tϵℤ}{∃ lϵ[d], mϵM_0 : χ\inv_l(mψ(k)) = t}\\
+			=& M_χ^ψ(k-1) \setminus χ\inv\left(ψ(k) · M_0\right) \\
+			=& M_χ^ψ(k-1) \setminus \Big( M_χ^ψ(k-1) \cap χ\inv\left(ψ(k) · M_0\right) \Big) \\
 		\end{split}
 	\end{equation}
 	
