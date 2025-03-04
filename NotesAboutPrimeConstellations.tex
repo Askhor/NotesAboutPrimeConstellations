@@ -107,11 +107,11 @@
 	
 	\subsubsection{Basic Prime Numbers}
 	
-	The constellation $χ(t)=\set{t}$ yields the primes.
+	The constellation $χ(t)= t$ yields the primes.
 	
 	\subsubsection{Twin Primes}
 	
-	The constellation $χ(t)=\set{t-2, t}$ yields twin primes.
+	The constellation $χ(t)= (t-2, t)$ yields twin primes.
 	
 	\subsubsection{Goldbach-n-primes}
 	
@@ -124,11 +124,15 @@
 	
 	\medskip
 	
-	The constellation $χ(t)=\set{t, n-t}$ yields Goldbach-$n$-primes
+	The constellation $χ(t)= (t, n-t)$ yields Goldbach-$n$-primes
 	
 	\subsubsection{Landau's Fourth Problem}
 	
-	The constellation $χ(t)=\set{t²+1}$ yields primes for Landau's fourth problem.
+	The constellation $χ(t)= t²+1$ yields primes for Landau's fourth problem.
+	
+	\subsubsection{Mersenne Primes}
+	
+	The constellation $χ(t) = 2^t-1$ yields Mersenne Primes.
 	
 	\section{Basic Definitions}
 	
@@ -164,7 +168,7 @@
 	For $χ=\id$:
 	\begin{equation}
 		\begin{split}
-			M_χ^ψ(k-1) \cap χ\left(ψ(k) · M_0\right) &= M_χ^ψ(k-1) \cap \left(ψ(k) · M_0\right) \\
+			M_χ^ψ(k-1) \cap χ\inv\left(ψ(k) · M_0\right) &= M_χ^ψ(k-1) \cap \left(ψ(k) · M_0\right) \\
 			&= ψ(k) · M_χ^ψ(k-1)
 		\end{split}
 	\end{equation}
@@ -172,8 +176,9 @@
 	For $χ(t)=\set{t-2, t}$:
 	\begin{equation}
 		\begin{split}
-			M_χ^ψ(k-1) \cap χ\left(ψ(k) · M_0\right) &= M_χ^ψ(k-1) \cap χ\left(ψ(k) · M_0\right) \\
-			&= {???}
+			M&_χ^ψ(k-1) \cap χ\inv\left(ψ(k) · M_0\right)\\
+			 &= M_χ^ψ(k-1) \cap (ψ(k) · M_0 \cup (ψ(k) · M_0 + 2)) \\
+			&= (M_χ^ψ(k-1) \cap ψ(k) M_0) \ \cup\ (M_χ^ψ(k-1) \cap ψ(k)M_0 + 2)
 		\end{split}
 	\end{equation}
 	
